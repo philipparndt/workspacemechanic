@@ -100,6 +100,11 @@ public class MechanicStatusControlContribution extends WorkbenchWindowControlCon
     };
     updateRecordingStatusMenuItems(preferenceRecordingService.isRecording());
   }
+  
+  @Override
+  public boolean isDynamic() {
+    return true;
+  }
 
   private static Action createHelpAction() {
     String helpUrl = OldMechanicPreferences.getHelpUrl();
@@ -114,6 +119,7 @@ public class MechanicStatusControlContribution extends WorkbenchWindowControlCon
   @Override
   protected Control createControl(Composite parent) {
     initImageCache();
+    parent.getParent().setRedraw(true);
 
     label = new Label(parent, SWT.CENTER);
     label.setSize(22, 22);
